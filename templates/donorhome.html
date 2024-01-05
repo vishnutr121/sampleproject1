@@ -1,0 +1,24 @@
+{% extends 'navbardonor.html' %}
+{% block content %}
+{% load static %}
+<div class="card-deck mt-4 ml-3 mr-3">
+    <div class="card" style="text-align: justify;background-color: rgb(9, 0, 40);border-radius: 0;">
+      <img class="card-img-top" style="height: 70%;" src="{% static 'images/img124.jpg' %}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center;"><a style="border-radius: 0;" class="btn btn-primary pl-4 pr-4" href="{% url 'edit_don' %}">Edit Profile</a></h5>
+    </div>
+    </div>
+    <div class="card" style="text-align: justify;background-color: rgb(9, 0, 40);border-radius: 0;">
+      <img class="card-img-top" style="height: 70%;" src="{% static 'images/img123.png' %}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center;"><a style="border-radius: 0;" class="btn btn-primary pl-4 pr-4" href="{% url 'donatepet' %}">Donate Pet</a></h5>
+    </div>
+    </div>
+    <div class="card" style="text-align: justify;background-color: rgb(9, 0, 40);border-radius: 0;">
+      <img class="card-img-top" style="height: 70%;" src="{% static 'images/img126.jpg' %}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center;"><a style="border-radius: 0;" class="btn btn-primary pl-4 pr-4" href="{% url 'donatedpets' %}">Donated Pets</a></h5>
+    </div>
+    </div>
+</div>
+{% endblock %}

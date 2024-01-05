@@ -1,0 +1,47 @@
+{% extends 'navbarsignup.html' %}
+{% block content %}
+      <div class="card-deck mt-3 pt-4 ml-3 mr-3 pb-2">
+        <div class="card pt-3 mt-0 pb-4 pr-3 pl-3" style="background-color: rgb(17, 17, 17);">
+          <div class="container-fluid mt-3">
+            {% for message in messages %}
+                <div class="container" style="text-align: center;">
+                  <h5 class="alert alert-danger mt-0 mb-3" id="message1" style="text-align: center;">
+                    {{message}}
+                  </h5>
+                </div>
+                {% endfor %}
+            <h3 class="text pb-3" style="color: rgb(255, 255, 255);text-align: center;">SIGNUP DONOR</h3>
+            <form style="text-align: left;" action="{% url 'add_don' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input type="text" name="dfname" class="form-control" placeholder="First Name" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="text" name="dlname" class="form-control" placeholder="Last Name" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="demail" class="form-control" placeholder="Email id" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);" required>
+                </div>
+                  <div class="form-group">
+                    <input type="text" name="dusername" class="form-control" placeholder="Username" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="dphone" class="form-control" placeholder="Phone No" pattern="[789]\d{9}" title="Please enter a valid 10-digit phone number" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);" required>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Address" name="daddress" rows="3" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label style="color: white;">Upload Photo:</label>
+                    <input type="file" name="img1" class="form-control" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);padding-bottom: 35px;" required>
+                  </div>
+                <div style="text-align: center;">
+                <button type="submit" style="border-radius: 0" class="btn btn-success mt-2">Sign Up <i class="fas fa-user-plus"></i></button>
+              </div>
+              </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}

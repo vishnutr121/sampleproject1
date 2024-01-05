@@ -1,0 +1,27 @@
+{% extends 'navbarcustomer.html' %}
+{% block content %}
+{% load static %}
+{% if pets %}
+<div class="container mt-4">
+  <h3 class="text pb-3" style="color: rgb(0, 0, 0); text-align: center;">PETS BOUGHT</h3>
+  <div class="row">
+      {% for i in pets %}
+      <div class="col-md-4 mb-4">
+          <div class="card" style="border-radius: 0; text-align: center; background-color: rgba(252, 253, 246, 0.717); max-width: 50vh; max-height: 65vh;">
+              <img class="card-img-top" src="{{i.pet.pet_image.url}}" alt="Card image cap" style="width: 100%; height: 150px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title" style="text-align: center;">{{i.pet.pet_name}}</h5>
+                <p class="card-text"><b>Seller:</b> {{i.pet.donor.user.first_name}} {{i.pet.donor.user.last_name}}</p>
+                <p class="card-text"><b>Seller Phone:</b> {{i.pet.donor.phone_number}}</p>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="container-fluid mt-3">
+  <h3 class="text pt-3" style="color: rgb(0, 0, 0); text-align: center;">No pets bought</h3>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'navbardonor.html' %}
+{% block content %}
+{% if pets %}
+{% for message in messages %}
+                <div class="container" style="text-align: center;">
+                  <h5 class="alert alert-danger mt-2 mb-3" id="message1" style="text-align: center;">
+                    {{message}}
+                  </h5>
+                </div>
+                {% endfor %}
+<h3 class="text pb-0 mt-3" style="color: rgb(255, 255, 255);text-align: center;">DONATED NOT SOLD PETS</h3>
+      <div class="card-deck mt-1 pt-3 ml-3 mr-3 pb-2">
+        <table class="table table-striped table-dark text-center d-none d-md-table">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col" style="white-space: nowrap;">Pet Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Image</th>
+                  <th scope="col" colspan="2">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for i in pets %}
+              <tr>
+                  <td>{{ i.pet_name }}</td>
+                  <td>{{ i.category.category_name }}</td>
+                  <td>{{ i.pet_description }}</td>
+                  <td>{{ i.price }}</td>
+                  <td class="image-column"><img src="{{ i.pet_image.url }}" class="w-25" alt="Pet Image"></td>
+                  <td><a href="{% url 'editpet' i.id %}" class="btn btn-outline-warning pt-0 pb-0">Edit</a></td>
+                  <td><a href="{% url 'delete_pet' i.id %}" class="btn btn-outline-danger pt-0 pb-0">Delete</a></td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+          <table class="table table-striped table-dark table-responsive text-center d-md-none">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" style="white-space: nowrap;">Pet Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Image</th>
+                  <th scope="col" colspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in pets %}
+              <tr>
+                <td>{{i.pet_name}}</td>
+                  <td>{{i.category.category_name}}</td>
+                  <td>{{i.pet_description}}</td>
+                  <td>{{i.price}}</td>
+                  <td class="image-column"><img src="{{i.pet_image.url}}" class="w-25"></td>
+                  <td><a href="{% url 'editpet' i.id %}" class="btn btn-outline-warning pt-0 pb-0">Edit</a></td>
+                  <td><a href="{% url 'delete_pet' i.id %}" class="btn btn-outline-danger pt-0 pb-0">Delete</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        {% else %}
+        <div class="container-fluid mt-3">
+          <h3 class="text pt-3" style="color: rgb(255, 255, 255);text-align: center;">No Unsold Pets!!!</h3>
+        </div>
+    {% endif %}
+{% endblock %}
+
+

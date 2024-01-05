@@ -1,0 +1,18 @@
+{% extends 'navbarcustomer.html' %}
+{% block content %}
+    <div class="card-deck mt-5 ml-3 mr-3">
+      <div class="card text-dark text-center mb-3" style="background-color: rgba(0, 0, 0, 0.945);">
+        <div class="card-header"><h5 style="color: white;" class="card-title">{{pet.pet_name}}</h5></div>
+        <div class="card-body" style="text-align: center;color: white;border: 1px solid rgba(255, 255, 255, 0.402);">
+          <img src="{{pet.pet_image.url}}" class="w-25">
+          <p class="card-text pt-3"><b>Price :</b> ₹{{pet.price}}</p>
+          <p class="card-text"><b>Details :</b> {{pet.pet_description}}</p>
+          <p class="card-text"><b>Seller Name :</b> {{pet.donor.user.first_name}} {{pet.donor.user.last_name}}</p>
+          <p class="card-text"><b>Contact No :</b> {{pet.donor.phone_number}}</p>
+            <a style="border-radius: 0" class="btn btn-success pt-1 pb-1" href="{% url 'buypet' pet.id %}"><i class="fas fa-shopping-cart"></i> Buy</a>
+            <a style="border-radius: 0" class="btn btn-warning ml-1 pt-1 pb-1" href="{% url 'pets_available' %}">Back</a>
+      </div>
+      </div>
+      </div>
+{% endblock %}
+

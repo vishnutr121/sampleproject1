@@ -1,0 +1,76 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% if pet %}
+<h3 class="text pt-3" style="color: rgb(255, 255, 255);text-align: center;">DONATION DETAILS</h3>
+      <div class="card-deck mt-2 pt-3 ml-3 mr-3 pb-2">
+            <table class="table table-striped table-dark text-center d-none d-md-table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Pet Name</th>
+                  <th scope="col">Category</th>
+                    <th scope="col">Price(₹)</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Buyer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in pet %}
+                <tr>
+                  <td>{{i.pet_name}}</td>
+                  <td>{{i.category.category_name}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.pet_description}}</td>
+                    {% if i.buystatus == 'Sold' %}
+                    <td style="white-space: nowrap;"><a class="btn btn-outline-success pt-0 pb-0">{{i.buystatus}}</a></td>
+                    {% else %}
+                    <td style="white-space: nowrap;"><a class="btn btn-outline-warning pt-0 pb-0">{{i.buystatus}}</a></td>
+                    {% endif %}
+                    {% if i.customer %}
+                    <td style="white-space: nowrap;">{{i.customer.user.first_name}} {{i.customer.user.last_name}}</td>
+                    {% else %}
+                    <td style="white-space: nowrap;">Nil</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+          <table class="table table-striped table-dark table-responsive text-center d-md-none">
+            <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Pet Name</th>
+                  <th scope="col">Category</th>
+                    <th scope="col">Price(₹)</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Buyer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in pet %}
+                <tr>
+                  <td>{{i.pet_name}}</td>
+                  <td>{{i.category.category_name}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.pet_description}}</td>
+                    {% if i.buystatus == 'Sold' %}
+                    <td style="white-space: nowrap;"><a class="btn btn-outline-success pt-0 pb-0">{{i.buystatus}}</a></td>
+                    {% else %}
+                    <td style="white-space: nowrap;"><a class="btn btn-outline-warning pt-0 pb-0">{{i.buystatus}}</a></td>
+                    {% endif %}
+                    {% if i.customer %}
+                    <td style="white-space: nowrap;">{{i.customer.user.first_name}} {{i.customer.user.last_name}}</td>
+                    {% else %}
+                    <td style="white-space: nowrap;">Nil</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+        </div>
+        {% else %}
+        <div class="container-fluid mt-3">
+          <h3 class="text pt-3" style="color: rgb(255, 255, 255);text-align: center;">No donations</h3>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'navbarcustomer.html' %}
+{% block content %}
+{% load static %}
+<div class="container mt-4">
+  <h3 class="text pb-3" style="color: rgb(0, 0, 0);text-align: center;">ALL CATEGORIES</h3>
+  <div class="row">
+    {% for i in category %}
+    <div class="col-md-4 mb-4">
+        <div class="card" style="border-radius: 0; text-align: center; background-color: rgb(16, 0, 0); max-width: 50vh; max-height: 65vh;">
+            <img class="card-img-top" src="{{i.category_image.url}}" alt="Card image cap" style="width: 100%; height: 200px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: center;"><a style="border-radius: 0;" class="btn btn-warning pl-4 pr-4" href="{% url 'category_pets' i.id %}"><i class="fas fa-paw"></i> {{i.category_name}}</a></h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

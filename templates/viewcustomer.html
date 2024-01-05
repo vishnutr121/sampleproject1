@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+{% block content %}
+    <div class="card-deck mt-5 ml-3 mr-3">
+      <div class="card text-dark text-center bg-dark mb-3">
+        <div class="card-header"><h5 class="card-title text-light">{{cus.user.first_name}} {{cus.user.last_name}}</h5></div>
+        <div class="card-body text-light" style="text-align: center;">
+          <img src="{{cus.image.url}}" class="w-25">
+          <p class="card-text pt-3"><b>Username :</b> {{cus.user.username}}</p>
+          <p class="card-text"><b>Email :</b> {{cus.user.email}}</p>
+          <p class="card-text"><b>Phone Number :</b> {{cus.phone_number}}</p>
+          <p class="card-text"><b>Address :</b> {{cus.address}}</p>
+            <a style="border-radius: 0" class="btn btn-success pt-1 pb-1" href="{% url 'customerdetails' %}">Back</a>
+            <a style="border-radius: 0" class="btn btn-danger ml-1 pt-1 pb-1" href="{% url 'delete_cus' cus.id %}">Delete</a>
+      </div>
+      </div>
+      </div>
+{% endblock %}
+

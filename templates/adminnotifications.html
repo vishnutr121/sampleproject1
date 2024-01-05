@@ -1,0 +1,61 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% if pet %}
+      <div class="card-deck mt-2 pt-4 ml-3 mr-3 pb-2">
+            <table class="table table-striped table-dark table-striped text-center d-none d-md-table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Seller</th>
+                    <th scope="col">Pet Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price(₹)</th>
+                    <th scope="col">Description</th>
+                    <th scope="col" colspan="2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in pet %}
+                <tr>
+                  <td>{{i.donor.user.username}}</td>
+                    <td>{{i.pet_name}}</td>
+                    <td>{{i.category.category_name}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.pet_description}}</td>
+                    <td><a style="border-radius: 0" href="{% url 'approve_pet' i.id %}" class="btn btn-outline-success pt-0 pb-0">Approve</a></td>
+                    <td><a style="border-radius: 0" href="{% url 'disapprove_pet' i.id %}" class="btn btn-outline-danger pt-0 pb-0">Disapprove</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+          <table class="table table-striped table-dark table-responsive text-center d-md-none">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Seller</th>
+                  <th scope="col">Pet Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Price(₹)</th>
+                  <th scope="col">Description</th>
+                  <th scope="col" colspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in pet %}
+              <tr>
+                <td>{{i.donor.user.username}}</td>
+                  <td>{{i.pet_name}}</td>
+                  <td>{{i.category.category_name}}</td>
+                  <td>{{i.price}}</td>
+                  <td>{{i.pet_description}}</td>
+                  <td><a style="border-radius: 0" href="{% url 'approve_pet' i.id %}" class="btn btn-outline-success pt-0 pb-0">Approve</a></td>
+                  <td><a style="border-radius: 0" href="{% url 'disapprove_pet' i.id %}" class="btn btn-outline-danger pt-0 pb-0">Disapprove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        {% else %}
+        <div class="container-fluid mt-3">
+          <h3 class="text pt-3" style="color: rgb(255, 255, 255);text-align: center;">No new notifications</h3>
+        </div>
+    {% endif %}
+{% endblock %}

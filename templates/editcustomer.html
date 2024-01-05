@@ -1,0 +1,62 @@
+{% extends 'navbarcustomer.html' %}
+{% block content %}
+{% for message in messages %}
+<div class="container" style="text-align: center;">
+  <h5 class="alert alert-danger mt-3 mb-0" style="text-align: center;">
+    {{message}}
+  </h5>
+</div>
+{% endfor %}
+      <div class="card-deck mt-2 pt-4 ml-3 mr-3 pb-2">
+        <div class="card pt-3 mt-0 pb-4 pr-3 pl-3" style="background-color: rgba(15, 15, 15, 0.954);">
+          <div class="container-fluid mt-3">
+            <h3 class="text pb-3" style="color: rgb(255, 255, 255);text-align: center;">EDIT DETAILS</h3>
+            <form action="{% url 'edit_cus_details' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" style="color: white;">First Name:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="{{usr.user.first_name}}" name="ufname" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" style="color: white;">Last Name:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="{{usr.user.last_name}}" name="ulname" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" style="color: white;">Username:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="{{usr.user.username}}" name="uusrname" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" style="color: white;">Email Id:</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" value="{{usr.user.email}}" name="uemail" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label style="color: white;">Address:</label>
+                    <textarea class="form-control" name="uaddress" rows="3" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);">{{usr.address}}</textarea>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" style="color: white;">Phone No:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="{{usr.phone_number}}" name="uphone" pattern="[789]\d{9}" title="Please enter a valid 10-digit phone number" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label style="color: white;">Image:</label><br>
+                    <img src="{{usr.image.url}}" class="w-25 mb-2">
+                    <input type="file" name="imgfile" class="form-control" accept="image/*" style="background-color: black;color: white;border: 1px solid rgba(255, 255, 255, 0.425);padding-bottom: 35px;">
+                  </div>
+                  <div style="text-align: center;">
+                  <button type="submit" style="border-radius: 0;" class="btn btn-success mb-1 mt-2">Update</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}

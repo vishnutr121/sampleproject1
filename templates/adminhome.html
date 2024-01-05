@@ -1,0 +1,28 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+<div class="card-deck mt-4 ml-3 mr-3">
+  <div class="card text-white text-center bg-danger mb-3">
+    <div class="card-header">NOTIFICATIONS</div>
+    <div class="card-body">
+      <a href="{% url 'adminnotifications' %}" style="color: white;text-decoration: none;"><h1 class="card-title" style="font-size: 100px;">{{c4}}</h1></a></div>
+  </div>
+  <div class="card text-white text-center bg-dark mb-3">
+    <div class="card-header">TOTAL DONORS</div>
+    <div class="card-body">
+      <a href="{% url 'donordetails' %}" style="color: white;text-decoration: none;"><h1 class="card-title" style="font-size: 100px;">{{c1}}</h1></a></div>
+  </div>
+  </div>
+  <div class="card-deck mt-4 ml-3 mr-3">
+    <div class="card text-white text-center bg-info mb-3">
+      <div class="card-header">TOTAL CUSTOMERS</div>
+      <div class="card-body">
+        <a href="{% url 'customerdetails' %}" style="color: white;text-decoration: none;"><h1 class="card-title" style="font-size: 100px;">{{c2}}</h1></a></div>
+    </div>
+    <div class="card text-white text-center bg-success mb-3">
+      <div class="card-header">TOTAL SALE</div>
+      <div class="card-body">
+        <a href="{% url 'donationdetails' %}" style="color: white;text-decoration: none;"><h1 class="card-title" style="font-size: 100px;">{{c3}}</h1></a></div>
+    </div>
+    </div>
+{% endblock %}
